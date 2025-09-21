@@ -1,19 +1,55 @@
-/* A subtle radial gradient for the profile picture's background effect */
-.bg-radial-gradient {
-    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+/* Custom CSS for the portfolio website.
+  These styles are used to complement Tailwind CSS and provide additional
+  visual enhancements like animations and custom layouts.
+*/
+
+/* General Body and Main Container Styles */
+body {
+    background-color: #0d1117; /* A deep, dark background for the entire page */
+    color: #c9d1d9; /* Light text for readability */
 }
 
-/* Custom shadow for a glowing effect on cards and elements */
-.glowing-shadow {
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Cyan glow */
+/* Page transitions and animations */
+.page-enter {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-/* Simple animation for hover effects */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+/* Card and Panel Animations */
+.group:hover .group-hover-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.group-hover-visible {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 300ms ease-in-out;
+}
+
+/* Button hover effects */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments for layout */
+@media (min-width: 768px) {
+    .grid-cols-1-md-2-lg-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-cols-1-md-2-lg-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
